@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LAST GATE // 最後の門</title>
+<meta name="description" content="LAST GATE｜最後の門。まだ終わっていない人を、終わらせない。倒産・借金・失業・前科・依存・信用喪失・孤立。一人の人生として捉え、必要な専門家と出口を探す。">
+<meta property="og:title" content="LAST GATE // 最後の門">
+<meta property="og:description" content="まだ終わっていない人を、終わらせない。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://lastgate-official.github.io/lastgate/assets/ogp.webp">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+ --bg:#f7f7f4;--panel:#ffffff;--ink:#18201c;--ink2:#2c3832;--muted:#4d574f;
+ --line:#d9dfda;--red:#8f312d;--green:#2f6b45;--amber:#8a6a2f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans Mono CJK JP",monospace;
+ line-height:1.75;overflow-x:hidden;-webkit-text-size-adjust:100%}
+.jp{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,calc(100% - 34px));margin:auto}
+.mono{letter-spacing:.11em;text-transform:uppercase}
+
+/* header */
+.top{position:sticky;top:0;z-index:40;background:#fffffff2;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.14em;font-size:12px}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:contain;background:#fff}
+.navlinks{display:flex;gap:20px;align-items:center;font-size:11px;color:#3f4a44}
+.sos{border:1px solid var(--red);color:var(--red);background:#fff;padding:10px 15px;font-weight:800}
+
+/* hero */
+.hero{position:relative;border-bottom:1px solid var(--line)}
+.heroimg{width:100%;aspect-ratio:1734/907;background:#f2f1ec url("assets/ogp.webp") center/cover no-repeat}
+.heroover{position:absolute;inset:0;display:grid;align-items:center;
+ background:linear-gradient(90deg,#f7f7f4f2 0%,#f7f7f4e0 38%,#f7f7f400 66%)}
+.heroContent{max-width:640px;padding:20px 0}
+.stamp{display:inline-block;border:1px solid var(--red);color:var(--red);padding:6px 11px;font-size:10px;letter-spacing:.18em;transform:rotate(-1deg)}
+h1{font-size:clamp(46px,7.2vw,96px);line-height:.92;letter-spacing:.04em;margin:20px 0 10px}
+.sub{font-size:clamp(17px,2.2vw,26px);letter-spacing:.16em}
+.lede{font-size:clamp(15px,1.4vw,18px);color:var(--ink2);margin:20px 0 0;max-width:560px}
+.terminal{margin:22px 0;border-left:2px solid var(--green);padding:6px 0 6px 16px;color:#33523f;font-size:11.5px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid #879189;padding:14px 18px;font-weight:800;font-size:12px;letter-spacing:.08em;background:#fff}
+.btn.primary{background:#1d2922;color:#fff;border-color:#1d2922}
+.btn.red{border-color:var(--red);color:var(--red)}
+
+/* sections */
+section{padding:84px 0;border-top:1px solid var(--line)}
+.ey{color:#5c6760;font-size:11px;letter-spacing:.2em}
+h2{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ font-size:clamp(28px,4.2vw,50px);line-height:1.3;margin:11px 0 24px;letter-spacing:.01em}
+h3{font-size:17px;margin:12px 0}
+.lead{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;font-size:17px;color:var(--ink2)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.en{color:var(--muted);font-size:12px;letter-spacing:.05em}
+
+/* SOS */
+.sosSec{background:#f1f3f0}
+.sosGrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
+.sosPhoto{border:1px solid var(--line);background:#fff;padding:12px}
+.sosPhoto img{width:100%}
+.sosPhoto figcaption{font-size:11px;color:var(--muted);padding:12px 4px 2px;line-height:1.7}
+form{border:1px solid #344038;background:#fff;padding:26px;box-shadow:0 18px 55px rgba(35,48,40,.08)}
+label{display:block;margin:18px 0 7px;font-size:12px;color:#3f4a44;font-weight:700}
+input,textarea{width:100%;background:#fff;color:var(--ink);border:1px solid #9aa79f;padding:13px;font:inherit}
+input::placeholder,textarea::placeholder{color:#8d978f}
+textarea{min-height:118px}
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.checks label{margin:0;border:1px solid #d5dbd6;padding:9px;font-weight:400}
+.checks input{width:auto;margin-right:6px}
+.alert{border:1px solid var(--red);background:#fff6f5;padding:15px;color:var(--red);font-size:12px;line-height:1.75}
+.notice{border:1px solid var(--amber);background:#fdf8ee;padding:15px;color:#6d5320;font-size:12px;margin-top:18px;line-height:1.75}
+.submit{width:100%;margin-top:20px;cursor:pointer;justify-content:center}
+.submit[disabled]{opacity:.45;cursor:not-allowed}
+.finenote{font-size:11px;color:var(--muted);line-height:1.7;margin-top:16px}
+
+/* readout */
+.readout{border:1px solid var(--line);background:#f1f3f0;padding:20px}
+.readout .row{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed #b9c3bc;padding:9px 0;font-size:11.5px}
+.ok{color:var(--green);font-weight:700}
+.classified{color:var(--red);font-weight:700}
+
+/* modules */
+.modules{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:34px}
+.module{border:1px solid var(--line);padding:22px;min-height:196px;background:linear-gradient(145deg,#fff,#f4f6f3)}
+.module img{width:44px;height:44px;object-fit:contain;margin-bottom:16px}
+.module b{display:block;font-size:13px;letter-spacing:.08em}
+.module small{display:block;color:var(--muted);margin-top:9px;font-size:12px;line-height:1.7}
+
+/* divider */
+.divider{height:clamp(150px,20vw,260px);background:url("assets/divider.webp") center/cover no-repeat;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* recording */
+.recSec{background:#fff}
+.wave{width:100%;border:1px solid var(--line);background:#fcfbf6 url("assets/wave.webp") center/100% auto no-repeat;aspect-ratio:1800/600;margin:26px 0}
+.recGrid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.status{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--amber);color:#6d5320;padding:8px 13px;font-size:11px;letter-spacing:.12em;background:#fdf8ee}
+.policy{border:1px solid var(--line);padding:20px;background:#f7f7f4}
+.policy li{font-size:13px;color:var(--ink2);margin:10px 0;line-height:1.8}
+
+/* case files */
+.files{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:34px}
+.file{border:1px solid var(--line);background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.fileimg{position:relative;aspect-ratio:1/1;background-size:cover;background-position:center;filter:grayscale(.55) contrast(.95)}
+.fileimg:after{content:"CLASSIFIED";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-9deg);
+ border:2px solid var(--red);color:var(--red);background:#fffffff0;padding:6px 10px;font-weight:900;letter-spacing:.12em;font-size:11px;white-space:nowrap}
+.filebody{padding:15px}
+.file .n{color:#5c6760;font-size:10px;letter-spacing:.14em}
+.file p{font-size:11.5px;color:var(--muted);line-height:1.75;margin:0}
+.file.final{border-color:#b87a75}
+
+/* code */
+.rules{counter-reset:x;margin-top:28px}
+.rule{display:grid;grid-template-columns:78px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--line)}
+.rule:before{counter-increment:x;content:"CODE 0" counter(x);color:var(--muted);font-size:11px;letter-spacing:.12em}
+.rule strong{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;font-size:18px;line-height:1.6}
+
+/* operatives */
+.join{background:linear-gradient(120deg,#eef2ee,#fff)}
+.opPhoto{border:1px solid var(--line);background:#fff;padding:12px;margin-bottom:34px}
+.roles{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}
+.roles span{border:1px solid #aab5ad;padding:7px 11px;font-size:11.5px;color:var(--ink2)}
+.logoBig{width:min(300px,68vw);margin:0 auto}
+
+footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+
+/* boot */
+.boot{position:fixed;inset:0;z-index:100;background:#f7f7f4;display:grid;place-items:center;transition:.7s}
+.boot.hide{opacity:0;visibility:hidden}
+.bootbox{width:min(640px,86vw);color:#33523f;font-size:12px;text-align:center}
+.bootLogo{width:96px;height:96px;object-fit:contain;margin:0 auto 22px}
+.bar{height:3px;background:#dce4de;margin-top:15px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:#587765;animation:load 1.5s forwards}
+@keyframes load{to{width:100%}}
+
+@media(max-width:1000px){
+ .heroover{position:static;background:none;padding:34px 0 8px}
+ .heroContent{max-width:none;padding:0}
+ .hero .wrap{width:min(1180px,calc(100% - 34px))}
+ .grid2,.sosGrid,.recGrid{grid-template-columns:1fr;gap:30px}
+ .modules{grid-template-columns:1fr 1fr}
+ .files{grid-template-columns:1fr 1fr}
+ section{padding:62px 0}
+}
+@media(max-width:560px){
+ .navlinks a:not(.sos){display:none}
+ .brand span{display:none}
+ .modules,.files,.checks{grid-template-columns:1fr}
+ h1{font-size:clamp(42px,14vw,66px)}
+}
+</style>
+</head>
+<body>
+
+<div class="boot" id="boot"><div class="bootbox">
+<img class="bootLogo" src="assets/logo_round.webp" alt="">
+<div class="mono">LAST GATE // SECURE SYSTEM</div>
+<p>&gt; establishing encrypted channel...<br>&gt; identity requirement: NONE<br>&gt; jurisdiction: GLOBAL<br>&gt; mission: REBUILD</p>
+<div class="bar"><i></i></div>
+</div></div>
+
+<header class="top"><div class="wrap nav">
+<a class="brand" href="#top"><img src="assets/logo_round.webp" alt="LAST GATE"><span>LAST GATE // 最後の門</span></a>
+<nav class="navlinks">
+<a href="#mission">MISSION</a>
+<a href="#record">RECORDS</a>
+<a href="#cases">CASE FILES</a>
+<a href="#code">THE CODE</a>
+<a href="#join">OPERATIVES</a>
+<a class="sos" href="#help">SOS // 助けを求める</a>
+</nav>
+</div></header>
+
+<main id="top">
+
+<section class="hero" style="padding:0;border-top:0">
+ <div class="heroimg"></div>
+ <div class="heroover"><div class="wrap"><div class="heroContent">
+  <span class="stamp">RESTRICTED ACCESS // LEVEL LG-00</span>
+  <h1>LAST<br>GATE</h1>
+  <div class="sub">最後の門</div>
+  <div class="terminal">IDENTITY : NOT REQUIRED<br>CASE STATUS : ACCEPTING<br>JURISDICTION : GLOBAL<br>MISSION : REBUILD</div>
+  <p class="lede jp"><strong>まだ終わっていない人を、終わらせない。</strong><br>Your past does not define your future.<br><br>国籍、社会的地位、信用、過去。そのラベルだけで、あなたの未来を決めない。それでも、もう一度立ち上がることを諦めていない人のための、最後の門。</p>
+  <div class="actions">
+   <a class="btn primary" href="#help">SOS // 助けを求める</a>
+   <a class="btn" href="#join">支援側として参加する</a>
+  </div>
+ </div></div></div>
+</section>
+
+<section class="sosSec" id="help"><div class="wrap">
+ <div class="ey">SECURE CHANNEL // REQUEST RESCUE</div>
+ <h2>あなたの名前は、<br>まだ必要ありません。</h2>
+ <p class="lead">うまく説明できなくても構わない。今、何が起きているかだけを送ってください。</p>
+
+ <div class="sosGrid" style="margin-top:34px">
+  <figure class="sosPhoto" style="margin:0">
+   <img src="assets/sos.webp" alt="">
+   <figcaption>
+    身元の開示は不要。国籍、信用情報、前科の有無で受付を止めない。<br><br>
+    受け取った内容は、必要な範囲の専門家にのみ共有する。本人の同意なく第三者へ渡さない。
+   </figcaption>
+  </figure>
+
+  <form onsubmit="return false">
+   <div class="alert"><strong>EMERGENCY PROTOCOL</strong><br>
+   LAST GATEは救急機関ではありません。日本で生命・身体に差し迫った危険がある場合は119、犯罪・暴力など緊急の警察対応が必要な場合は110へ。海外では現地の緊急サービスへ。</div>
+
+   <label>CASE CATEGORY // 複数選択可</label>
+   <div class="checks">
+    <label><input type="checkbox"> DEBT / 債務・取立て</label>
+    <label><input type="checkbox"> BUSINESS / 会社・経営</label>
+    <label><input type="checkbox"> LEGAL / 法律</label>
+    <label><input type="checkbox"> MEDICAL / 医療・メンタル</label>
+    <label><input type="checkbox"> ADDICTION / 依存</label>
+    <label><input type="checkbox"> RE-ENTRY / 前科・社会復帰</label>
+    <label><input type="checkbox"> EMPLOYMENT / 仕事</label>
+    <label><input type="checkbox"> LIFE / 住居・生活</label>
+   </div>
+
+   <label>INCIDENT REPORT // 何が起きていますか</label>
+   <textarea placeholder="時系列でなくて構いません。断片でも送れます。"></textarea>
+
+   <label>OBJECTIVE // どうなりたいですか</label>
+   <textarea placeholder="守りたいもの、避けたい事態など。"></textarea>
+
+   <label>REGION // 国・地域</label>
+   <input placeholder="例：東京 / Tokyo, Japan">
+
+   <label>RETURN CHANNEL // 連絡方法</label>
+   <input placeholder="Email / SNS account etc.">
+
+   <button class="btn red submit" disabled>TRANSMIT REQUEST // 送信（準備中）</button>
+
+   <div class="notice"><strong>受付準備中</strong><br>
+   安全な送信先と保管体制を整備するまで、このフォームからの送信を停止しています。急ぎの相談は下記の連絡先へ。<br>
+   <strong>CONTACT :</strong> <!-- 公開時にここを差し替え -->準備中</div>
+
+   <p class="finenote">LAST GATEは法律事務所・医療機関・緊急通報機関ではありません。専門資格を要する業務は、適切な専門家・機関への接続を前提とします。正式受付の開始にあたりプライバシーポリシーを掲示します。</p>
+  </form>
+ </div>
+</div></section>
+
+<section id="mission"><div class="wrap">
+ <div class="grid2">
+  <div>
+   <div class="ey">FILE // LG-MISSION-001</div>
+   <h2>これは、保護施設ではない。<br>再起のための特殊支援網。</h2>
+   <p class="lead">倒産、借金、失業、前科、依存、信用喪失、孤立。問題を一つずつ別の窓口へ送るのではなく、一人の人生として捉え、必要な専門家と出口を探す。</p>
+  </div>
+  <div class="readout">
+   <div class="row"><span>NATIONALITY</span><span class="ok">NO RESTRICTION</span></div>
+   <div class="row"><span>CREDIT STATUS</span><span class="ok">NOT A BARRIER</span></div>
+   <div class="row"><span>CRIMINAL RECORD</span><span class="ok">NOT AUTOMATIC DENIAL</span></div>
+   <div class="row"><span>PAST FAILURE</span><span class="ok">NOT YOUR FUTURE</span></div>
+   <div class="row"><span>ONGOING ILLEGAL ACTIVITY</span><span class="classified">NOT SUPPORTED</span></div>
+   <div class="row"><span>WILL TO REBUILD</span><span class="ok">REQUIRED</span></div>
+  </div>
+ </div>
+
+ <div class="modules">
+  <div class="module"><img src="assets/icon_legal.webp" alt=""><b>LEGAL</b><small class="jp">債務・契約・紛争・社会復帰。資格を要する案件は専門家へ接続。</small></div>
+  <div class="module"><img src="assets/icon_finance.webp" alt=""><b>FINANCE</b><small class="jp">返済・資金計画・金融問題から再起への選択肢を整理。</small></div>
+  <div class="module"><img src="assets/icon_business.webp" alt=""><b>BUSINESS</b><small class="jp">廃業だけではなく、事業再建・継続の可能性を探る。</small></div>
+  <div class="module"><img src="assets/icon_medical.webp" alt=""><b>MEDICAL</b><small class="jp">身体・精神面の危機を見逃さず、適切な医療へつなぐ。</small></div>
+  <div class="module"><img src="assets/icon_care.webp" alt=""><b>CARE</b><small class="jp">本人・家族・生活背景まで含めた支援。</small></div>
+  <div class="module"><img src="assets/icon_life.webp" alt=""><b>LIFE</b><small class="jp">住居、生活、孤立など法律だけでは解けない問題。</small></div>
+  <div class="module"><img src="assets/icon_employment.webp" alt=""><b>EMPLOYMENT</b><small class="jp">再就職、仕事づくり、社会との接点を取り戻す。</small></div>
+  <div class="module"><img src="assets/icon_rebuild.webp" alt=""><b>REBUILD</b><small class="jp">相談で終わらせない。もう一度、自分で歩き始める。</small></div>
+ </div>
+</div></section>
+
+<div class="divider"></div>
+
+<section class="recSec" id="record"><div class="wrap">
+ <div class="ey">RECORDS // WHAT ACTUALLY HAPPENED</div>
+ <h2>同じことが、<br>どこかで今も起きている。</h2>
+ <p class="lead">督促の電話、書面、期限の通知。追い込まれている最中は、それが「自分だけの異常な出来事」に見える。実際の記録を並べると、同じ形の出来事が別の場所で繰り返されていることがわかる。</p>
+ <div class="wave"></div>
+
+ <div class="recGrid">
+  <div>
+   <div class="status">STATUS : PENDING LEGAL REVIEW</div>
+   <p class="lead" style="margin-top:20px">音声記録の公開は、交渉中の案件への影響と特定可能性を確認したうえで、段階的に解除する。第一段階は日付・書面・請求内容・こちらの回答による時系列記録。</p>
+  </div>
+  <div class="policy">
+   <div class="ey">DISCLOSURE POLICY</div>
+   <ul style="padding-left:18px;margin:14px 0 0">
+    <li class="jp">社名・個人名・担当者名は音声・表記ともに伏せる</li>
+    <li class="jp">公開するのは日付、書面の種類、請求内容、こちらの回答という一次事実</li>
+    <li class="jp">評価や非難の言葉を足さない。事実の列挙だけを置く</li>
+    <li class="jp">交渉が継続中の案件は、決着まで公開しない</li>
+    <li class="jp">目的は報復ではなく、どこで人が再起できなくなるのかの記録</li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<section id="cases"><div class="wrap">
+ <div class="ey">ARCHIVE // CASE FILES</div>
+ <h2>記録は、順次解除される。</h2>
+ <p class="lead">一人の当事者が経験した出来事を、確認できる記録とともに公開していく。</p>
+ <div class="files">
+  <article class="file"><div class="fileimg" style="background-image:url('assets/case000.webp')"></div><div class="filebody"><span class="n">CASE 000</span><h3>ORIGIN</h3><p class="jp">すべての始まり。なぜLAST GATEが必要になったのか。</p></div></article>
+  <article class="file"><div class="fileimg" style="background-image:url('assets/case001.webp')"></div><div class="filebody"><span class="n">CASE 001</span><h3>FINANCE / CREDIT</h3><p class="jp">支払い、信用、督促。その境界で起きたこと。</p></div></article>
+  <article class="file"><div class="fileimg" style="background-image:url('assets/case002.webp')"></div><div class="filebody"><span class="n">CASE 002</span><h3>VEHICLE</h3><p class="jp">車両と信用をめぐる記録。</p></div></article>
+  <article class="file"><div class="fileimg" style="background-image:url('assets/case003.webp')"></div><div class="filebody"><span class="n">CASE 003</span><h3>CORPORATE</h3><p class="jp">取引と企業対応の記録。</p></div></article>
+  <article class="file final"><div class="fileimg" style="background-image:url('assets/casefinal.webp')"></div><div class="filebody"><span class="n">CASE FINAL</span><h3>FOUNDER IDENTITY</h3><p class="jp">IDENTITY LOCKED. RELEASE PENDING.</p></div></article>
+ </div>
+</div></section>
+
+<section id="code"><div class="wrap">
+ <div class="ey">PROTOCOL // THE CODE</div>
+ <h2>過去ではなく、<br>これから何をするかを見る。</h2>
+ <div class="rules">
+  <div class="rule"><div><strong>過去だけで相談を断らない。</strong><br><span class="en">We don't judge you only by your past.</span></div></div>
+  <div class="rule"><div><strong>責任から逃げるための場所にはしない。</strong><br><span class="en">We don't help people escape responsibility.</span></div></div>
+  <div class="rule"><div><strong>犯罪・暴力・詐欺・資産隠し・反社会的活動を継続するための支援はしない。</strong><br><span class="en">No support for ongoing illegal activity.</span></div></div>
+  <div class="rule"><div><strong>本気で立ち直ろうとしている人には、最後まで方法を探す。</strong><br><span class="en">For those who truly intend to rebuild, we keep looking for a way.</span></div></div>
+ </div>
+</div></section>
+
+<section class="join" id="join"><div class="wrap">
+ <figure class="opPhoto"><img src="assets/operatives.webp" alt=""></figure>
+ <div class="grid2">
+  <div>
+   <div class="ey">RECRUITMENT // OPERATIVES</div>
+   <h2>STAND WITH US.<br>力を貸してください。</h2>
+   <p class="lead">相談が集まっても、受け止める側がいなければ出口はつくれない。専門と実務を持つ人を募集する。</p>
+   <div class="roles">
+    <span>弁護士</span><span>金融関係者</span><span>医師・看護師</span><span>介護職</span>
+    <span>心理・依存支援</span><span>経営者</span><span>再生専門家</span><span>雇用・住居支援</span>
+    <span>自ら再起した経験を持つ人</span>
+   </div>
+   <p class="lead">肩書きよりも、<strong>「まだ終わっていない人を、終わらせない」</strong>というCODEを共有できること。</p>
+   <div class="actions"><a class="btn" href="#help">REQUEST CONTACT // 参加を申し出る</a></div>
+  </div>
+  <div style="display:grid;place-items:center"><img class="logoBig" src="assets/logo.webp" alt="LAST GATE"></div>
+ </div>
+</div></section>
+
+<section><div class="wrap grid2">
+ <div>
+  <div class="ey">IDENTITY // LOCKED</div>
+  <h2>WHO CREATED<br>LAST GATE?</h2>
+ </div>
+ <div class="readout">
+  <div class="row"><span>FOUNDER</span><span class="classified">CLASSIFIED</span></div>
+  <div class="row"><span>STATUS</span><span>REBUILDING</span></div>
+  <div class="row"><span>IDENTITY RELEASE</span><span>FINAL EPISODE</span></div>
+  <p class="jp" style="margin-top:24px;font-size:14px;color:var(--ink2)">成功した後から再起を語るのではない。今まさに再建の途中にいる当事者からLAST GATEは始まる。</p>
+  <p class="en">This is not a story of revenge.<br>This is a story of rebuilding.</p>
+ </div>
+</div></section>
+
+</main>
+
+<footer><div class="wrap foot">
+ <div>LAST GATE // 最後の門<br>YOUR PAST DOES NOT DEFINE YOUR FUTURE.</div>
+ <div>INDEPENDENT REBUILD NETWORK<br>FROM JAPAN TO THE WORLD // 2026</div>
+</div></footer>
+
+<script>setTimeout(function(){document.getElementById('boot').classList.add('hide')},1800);</script>
+</body></html>
