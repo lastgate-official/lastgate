@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PRIVACY POLICY // LAST GATE</title>
+<meta name="description" content="LAST GATE の個人情報の取扱いについて。取得する情報、利用目的、保管、第三者への共有、削除請求の受付。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="PRIVACY POLICY // LAST GATE">
+<meta property="og:description" content="相談で受け取った情報の取扱い。">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://lastgate.org/assets/ogp.webp">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+ --bg:#f7f7f4;--panel:#ffffff;--ink:#18201c;--ink2:#2c3832;--muted:#4d574f;
+ --line:#d9dfda;--red:#8f312d;--green:#2f6b45;--amber:#8a6a2f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans Mono CJK JP",monospace;
+ line-height:1.75;overflow-x:hidden;-webkit-text-size-adjust:100%}
+.jp{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,calc(100% - 34px));margin:auto}
+.mono{letter-spacing:.11em;text-transform:uppercase}
+
+.top{position:sticky;top:0;z-index:40;background:#fffffff2;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.14em;font-size:12px}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:contain;background:#fff}
+.navlinks{display:flex;gap:20px;align-items:center;font-size:11px;color:#3f4a44}
+.sos{border:1px solid var(--red);color:var(--red);background:#fff;padding:10px 15px;font-weight:800}
+
+.head{padding:64px 0 10px}
+.ey{color:#5c6760;font-size:11px;letter-spacing:.2em}
+h1{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ font-size:clamp(30px,5vw,54px);line-height:1.25;margin:12px 0 18px;letter-spacing:.01em}
+.lead{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ font-size:17px;color:var(--ink2);max-width:760px}
+.meta{display:flex;gap:26px;flex-wrap:wrap;font-size:11px;color:var(--muted);
+ border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin:30px 0 0}
+
+.doc{padding:44px 0 90px;display:grid;grid-template-columns:230px 1fr;gap:56px;align-items:start}
+.toc{position:sticky;top:96px;border-left:2px solid var(--green);padding-left:16px}
+.toc a{display:block;font-size:11.5px;color:#41544a;padding:6px 0;line-height:1.5}
+.toc a:hover{color:var(--ink)}
+
+article section{border:0;border-top:1px solid var(--line);padding:34px 0 0;margin:0 0 34px}
+article section:first-child{border-top:0;padding-top:0}
+h2{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ font-size:20px;line-height:1.5;margin:0 0 16px;letter-spacing:.01em}
+h2 i{font-style:normal;color:var(--muted);font-size:11px;letter-spacing:.14em;
+ display:block;margin-bottom:7px;font-family:ui-monospace,monospace}
+article p{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ font-size:14.5px;color:var(--ink2);margin:0 0 14px;max-width:760px}
+article ul{padding-left:18px;margin:0 0 14px;max-width:760px}
+article li{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+ font-size:14.5px;color:var(--ink2);margin:9px 0;line-height:1.8}
+.panel{border:1px solid var(--line);background:#f1f3f0;padding:20px;max-width:760px;margin:0 0 14px}
+.panel .row{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed #b9c3bc;padding:9px 0;font-size:11.5px}
+.panel .row:last-child{border-bottom:0}
+.ok{color:var(--green);font-weight:700}
+.alert{border:1px solid var(--red);background:#fff6f5;padding:16px;color:var(--red);
+ font-size:12.5px;line-height:1.8;max-width:760px;margin:0 0 14px}
+.note{border:1px solid var(--amber);background:#fdf8ee;padding:16px;color:#6d5320;
+ font-size:12.5px;line-height:1.8;max-width:760px;margin:0 0 14px}
+.mail{border-bottom:1px solid var(--green);color:#2f6b45;font-weight:700}
+
+footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot a{border-bottom:1px solid var(--line)}
+
+@media(max-width:900px){
+ .doc{grid-template-columns:1fr;gap:30px;padding:34px 0 70px}
+ .toc{position:static;display:flex;flex-wrap:wrap;gap:4px 18px;border-left:0;
+  border-top:2px solid var(--green);padding:14px 0 0}
+}
+@media(max-width:560px){
+ .navlinks a:not(.sos){display:none}
+ .brand span{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap nav">
+<a class="brand" href="index.html"><img src="assets/logo_round.webp" alt="LAST GATE"><span>LAST GATE // 最後の門</span></a>
+<nav class="navlinks">
+<a href="index.html">TOP</a>
+<a href="index.html#mission">MISSION</a>
+<a href="index.html#code">THE CODE</a>
+<a class="sos" href="index.html#help">SOS // 助けを求める</a>
+</nav>
+</div></header>
+
+<main>
+
+<div class="wrap head">
+ <div class="ey">DOCUMENT // LG-PRIVACY-001</div>
+ <h1>相談で受け取った情報の<br>取扱いについて</h1>
+ <p class="lead">LAST GATE（以下、当ネットワーク）に寄せられる相談には、債務、健康、就労、司法手続に関する内容が含まれる。その情報を、どこに置き、誰が見て、いつ消すのか。運用の実態をそのまま記載する。</p>
+ <div class="meta">
+  <span>制定 2026-09-16</span>
+  <span>最終改定 2026-09-16</span>
+  <span>適用範囲 lastgate.org</span>
+ </div>
+</div>
+
+<div class="wrap doc">
+
+ <nav class="toc">
+  <a href="#s1">01 取得する情報</a>
+  <a href="#s2">02 利用目的</a>
+  <a href="#s3">03 保管と管理</a>
+  <a href="#s4">04 第三者への共有</a>
+  <a href="#s5">05 保管期間と削除</a>
+  <a href="#s6">06 名前を伏せたままの相談</a>
+  <a href="#s7">07 当ネットワークの範囲</a>
+  <a href="#s8">08 運営者</a>
+  <a href="#s9">09 改定</a>
+  <a href="#s10">10 連絡先</a>
+ </nav>
+
+ <article>
+
+  <section id="s1">
+   <h2><i>SECTION 01</i>取得する情報</h2>
+   <p>相談フォームから受け取るのは、相談者が自ら入力した内容のみ。</p>
+   <ul>
+    <li>相談の分野（債務、法律、医療、依存、社会復帰など）</li>
+    <li>現在の状況と、望んでいる結果についての記述</li>
+    <li>国・地域</li>
+    <li>返信のための連絡先（メールアドレスなど）</li>
+    <li>専門家への共有に同意するかどうかの選択</li>
+   </ul>
+   <p>氏名、住所、電話番号、生年月日は必須としない。相談者の判断で本文に書いた場合のみ、その情報を受け取る。</p>
+   <div class="panel">
+    <div class="row"><span>REAL NAME</span><span class="ok">NOT REQUIRED</span></div>
+    <div class="row"><span>ID DOCUMENT</span><span class="ok">NOT REQUIRED</span></div>
+    <div class="row"><span>CREDIT INFORMATION</span><span class="ok">NOT COLLECTED</span></div>
+    <div class="row"><span>CONTACT CHANNEL</span><span>REQUIRED FOR REPLY</span></div>
+   </div>
+   <p>サイトの閲覧そのものに、行動履歴を追跡する目的の計測は入れていない。</p>
+  </section>
+
+  <section id="s2">
+   <h2><i>SECTION 02</i>利用目的</h2>
+   <p>受け取った情報の使いみちは次の3つに限る。</p>
+   <ul>
+    <li>相談内容を読み、返信すること</li>
+    <li>相談者の同意を得たうえで、必要な専門家へ接続すること</li>
+    <li>個人が特定されない形に整理したうえで、相談の傾向を把握し、支援体制を組み立てること</li>
+   </ul>
+   <p>広告、営業、名簿としての利用、外部への販売はしない。</p>
+  </section>
+
+  <section id="s3">
+   <h2><i>SECTION 03</i>保管と管理</h2>
+   <p>相談の本文は、フォーム提供事業者の管理画面に置く。運営者の受信メールには「新しい相談が届いた」という通知だけを受け取り、本文はメールに載せない。メールの検索履歴や端末の同期を経由して内容が広がる経路を減らすため。</p>
+   <ul>
+    <li>管理画面へのログインは、この取り組み専用のアカウントに限定する</li>
+    <li>アカウントは二要素認証を設定する</li>
+    <li>本文の内容を、日常業務で使う他のサービスへ転記しない</li>
+   </ul>
+   <div class="note"><strong>通信の秘匿について</strong><br>
+   送信はhttpsで暗号化される。ただし、相談者が使う端末・回線・メールアカウントが第三者に管理されている場合、そこからの露見までは防げない。同居者や勤務先の端末からの送信には注意が必要。</div>
+  </section>
+
+  <section id="s4">
+   <h2><i>SECTION 04</i>第三者への共有</h2>
+   <p>専門家への共有は、相談者の同意を前提とする。フォームには「専門家への共有に同意する」「まず運営者とだけ話したい」の選択肢を置く。後者を選んだ相談は、運営者以外に渡さない。</p>
+   <p>共有する場合も、その相談に必要な範囲の専門家に限り、必要な部分だけを渡す。相談の一覧やデータベースを、支援側に開放することはしない。</p>
+   <p>本人の同意なく第三者へ提供するのは、次の場合に限る。</p>
+   <ul>
+    <li>法令にもとづく開示請求を受けた場合</li>
+    <li>生命または身体に差し迫った危険があり、本人の同意を得る余裕がない場合</li>
+   </ul>
+  </section>
+
+  <section id="s5">
+   <h2><i>SECTION 05</i>保管期間と削除</h2>
+   <p>相談は、やり取りが終了した時点から1年を目安に削除する。継続して支援している案件は、その終了まで保管する。</p>
+   <p>相談者からの削除の申し出には、期間の途中でも応じる。連絡先は下記。相談時に使った連絡先から申し出があれば、本人確認のための書類提出は求めない。</p>
+   <p>削除、内容の確認、訂正、利用停止の請求は、いずれも同じ窓口で受け付ける。</p>
+  </section>
+
+  <section id="s6">
+   <h2><i>SECTION 06</i>名前を伏せたままの相談</h2>
+   <p>身元の開示は、相談の条件ではない。国籍、信用情報、司法手続の経歴を理由に受付を止めることもしない。</p>
+   <p>ただし、専門家へ接続する段階では、その専門家の業務上、本名や状況の裏づけが必要になる場合がある。その時点で相談者に確認する。確認の前に情報が渡ることはない。</p>
+  </section>
+
+  <section id="s7">
+   <h2><i>SECTION 07</i>当ネットワークの範囲</h2>
+   <div class="alert"><strong>EMERGENCY PROTOCOL</strong><br>
+   当ネットワークは救急機関ではない。日本で生命・身体に差し迫った危険がある場合は119、犯罪・暴力など緊急の警察対応が必要な場合は110へ。海外では現地の緊急サービスへ。</div>
+   <p>当ネットワークは法律事務所、医療機関、金融機関のいずれでもない。弁護士法、医師法その他の法令で資格を要する業務は行わない。該当する案件は、資格を持つ専門家・機関への接続を前提とする。</p>
+   <p>フォームへの送信をもって、委任、診療、契約が成立することはない。返信までの時間を保証するものでもない。</p>
+  </section>
+
+  <section id="s8">
+   <h2><i>SECTION 08</i>運営者</h2>
+   <p>当ネットワークは、再建の途中にある個人が運営する。運営者の氏名は現時点で公開していない。成功した側から語るのではなく、当事者として始めるという立て付けのため。</p>
+   <p>相談者、専門家、報道関係者から運営者の氏名について照会があった場合は、下記の連絡先へ個別に回答する。匿名のまま運営を続ける前提ではない。</p>
+   <p>寄付の受付、有償の支援、法人としての活動に進む段階では、運営主体をこのページに明記する。</p>
+  </section>
+
+  <section id="s9">
+   <h2><i>SECTION 09</i>改定</h2>
+   <p>運用の変更に応じて、この文書を改定する。改定した場合は、ページ上部の最終改定日を更新する。継続して支援している相談者には、取扱いに影響する改定を個別に連絡する。</p>
+  </section>
+
+  <section id="s10">
+   <h2><i>SECTION 10</i>連絡先</h2>
+   <p>この文書に関する問い合わせ、削除・訂正・利用停止の請求、運営者への照会は、いずれも下記で受け付ける。</p>
+   <div class="panel">
+    <div class="row"><span>CONTACT</span><span><a class="mail" href="mailto:contact@lastgate.org">contact@lastgate.org</a></span></div>
+    <div class="row"><span>RESPONSE</span><span>順次対応</span></div>
+   </div>
+   <p>相談そのものは、フォームから送信できる。</p>
+  </section>
+
+ </article>
+</div>
+
+</main>
+
+<footer><div class="wrap foot">
+ <div>LAST GATE // 最後の門<br>YOUR PAST DOES NOT DEFINE YOUR FUTURE.</div>
+ <div><a href="index.html">TOP</a> / <a href="privacy.html">PRIVACY POLICY</a><br>INDEPENDENT REBUILD NETWORK // 2026</div>
+</div></footer>
+
+</body></html>

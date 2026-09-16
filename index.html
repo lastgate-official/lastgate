@@ -8,7 +8,9 @@
 <meta property="og:title" content="LAST GATE // 最後の門">
 <meta property="og:description" content="まだ終わっていない人を、終わらせない。">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://lastgate-official.github.io/lastgate/assets/ogp.webp">
+<meta property="og:url" content="https://lastgate.org/">
+<meta property="og:image" content="https://lastgate.org/assets/ogp.webp">
+<link rel="canonical" href="https://lastgate.org/">
 <meta name="twitter:card" content="summary_large_image">
 <style>
 :root{
@@ -79,6 +81,9 @@ textarea{min-height:118px}
 .submit{width:100%;margin-top:20px;cursor:pointer;justify-content:center}
 .submit[disabled]{opacity:.45;cursor:not-allowed}
 .finenote{font-size:11px;color:var(--muted);line-height:1.7;margin-top:16px}
+.mail{border-bottom:1px solid var(--green);color:#2f6b45;font-weight:700}
+.embedShell{border:1px solid #344038;background:#fff;padding:26px;box-shadow:0 18px 55px rgba(35,48,40,.08)}
+.embedShell iframe{width:100%;border:0;display:block;margin-top:6px}
 
 /* readout */
 .readout{border:1px solid var(--line);background:#f1f3f0;padding:20px}
@@ -239,12 +244,20 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 
    <button class="btn red submit" disabled>TRANSMIT REQUEST // 送信（準備中）</button>
 
-   <div class="notice"><strong>受付準備中</strong><br>
-   安全な送信先と保管体制を整備するまで、このフォームからの送信を停止しています。急ぎの相談は下記の連絡先へ。<br>
-   <strong>CONTACT :</strong> <!-- 公開時にここを差し替え -->準備中</div>
+   <div class="notice"><strong>フォーム準備中</strong><br>
+   送信フォームの受付開始まで、相談はメールで受け付けます。<br>
+   <strong>CONTACT :</strong> <a class="mail" href="mailto:contact@lastgate.org">contact@lastgate.org</a></div>
 
-   <p class="finenote">LAST GATEは法律事務所・医療機関・緊急通報機関ではありません。専門資格を要する業務は、適切な専門家・機関への接続を前提とします。正式受付の開始にあたりプライバシーポリシーを掲示します。</p>
+   <p class="finenote">LAST GATEは法律事務所・医療機関・緊急通報機関ではありません。専門資格を要する業務は、適切な専門家・機関への接続を前提とします。受け取った情報の取扱いは<a class="mail" href="privacy.html">プライバシーポリシー</a>に記載しています。</p>
   </form>
+
+  <div class="embedShell" id="liveForm" hidden>
+   <div class="alert"><strong>EMERGENCY PROTOCOL</strong><br>
+   LAST GATEは救急機関ではありません。日本で生命・身体に差し迫った危険がある場合は119、犯罪・暴力など緊急の警察対応が必要な場合は110へ。海外では現地の緊急サービスへ。</div>
+   <iframe id="tallyFrame" src="" height="640" title="SOS // REQUEST RESCUE" loading="lazy"></iframe>
+   <p class="finenote">LAST GATEは法律事務所・医療機関・緊急通報機関ではありません。専門資格を要する業務は、適切な専門家・機関への接続を前提とします。受け取った情報の取扱いは<a class="mail" href="privacy.html">プライバシーポリシー</a>に記載しています。<br>
+   フォームが表示されない場合は <a class="mail" href="mailto:contact@lastgate.org">contact@lastgate.org</a> へ。</p>
+  </div>
  </div>
 </div></section>
 
@@ -364,8 +377,28 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 
 <footer><div class="wrap foot">
  <div>LAST GATE // 最後の門<br>YOUR PAST DOES NOT DEFINE YOUR FUTURE.</div>
- <div>INDEPENDENT REBUILD NETWORK<br>FROM JAPAN TO THE WORLD // 2026</div>
+ <div><a class="mail" href="privacy.html">PRIVACY POLICY</a> / <a class="mail" href="mailto:contact@lastgate.org">contact@lastgate.org</a><br>INDEPENDENT REBUILD NETWORK // FROM JAPAN TO THE WORLD // 2026</div>
 </div></footer>
 
-<script>setTimeout(function(){document.getElementById('boot').classList.add('hide')},1800);</script>
+<script>
+setTimeout(function(){document.getElementById('boot').classList.add('hide')},1800);
+
+/* SOSフォーム切替。TALLY_ID にフォームIDを入れると埋め込みが有効になる。空の間は準備中フォームを表示 */
+var TALLY_ID = "";
+(function(){
+ if(!TALLY_ID) return;
+ var stat = document.querySelector('.sosGrid form');
+ var live = document.getElementById('liveForm');
+ var f = document.getElementById('tallyFrame');
+ f.src = "https://tally.so/embed/" + TALLY_ID + "?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+ if(stat) stat.hidden = true;
+ live.hidden = false;
+ window.addEventListener('message', function(e){
+  if(typeof e.data !== 'string' || e.data.indexOf('tally') === -1) return;
+  try{ var d = JSON.parse(e.data);
+   if(d.event === 'Tally.FormPageView' && d.payload && d.payload.height) f.height = d.payload.height;
+  }catch(err){}
+ });
+})();
+</script>
 </body></html>
