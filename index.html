@@ -64,6 +64,15 @@ h3{font-size:17px;margin:12px 0}
 
 /* SOS */
 .sosSec{background:#f1f3f0}
+.stance{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:32px 0 0}
+.stance div{border:1px solid var(--line);background:#fff;padding:21px}
+.stance b{display:block;font-size:10.5px;letter-spacing:.15em;color:var(--muted);margin-bottom:10px}
+.stance p{margin:0;font-size:14px;color:var(--ink2);line-height:1.85;
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+.terms{border-top:1px solid #c3ccc5;border-bottom:1px solid #c3ccc5;margin:24px 0 0;padding:17px 0;display:grid;gap:9px}
+.terms span{font-size:12.5px;color:#3f5247;padding-left:20px;position:relative;line-height:1.75;
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+.terms span:before{content:"//";position:absolute;left:0;color:var(--muted);font-family:ui-monospace,monospace}
 .sosGrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
 .sosPhoto{border:1px solid var(--line);background:#fff;padding:12px}
 .sosPhoto img{width:100%}
@@ -146,6 +155,7 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 @keyframes load{to{width:100%}}
 
 @media(max-width:1000px){
+ .stance{grid-template-columns:1fr}
  .heroover{position:static;background:none;padding:34px 0 8px}
  .heroContent{max-width:none;padding:0}
  .hero .wrap{width:min(1180px,calc(100% - 34px))}
@@ -205,6 +215,19 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-s
  <h2>あなたの名前は、<br>まだ必要ありません。</h2>
  <p class="lead">うまく説明できなくても構わない。今、何が起きているかだけを送ってください。</p>
 
+ <div class="stance">
+  <div><b>FEE // 費用</b><p>相談料、紹介料、成功報酬のいずれも取らない。受け取った連絡先を名簿として外部に渡すこともしない。</p></div>
+  <div><b>ANONYMITY // 運営者が名乗らない理由</b><p>運営者自身が金融機関との交渉の最中にいる。先に名前を出せば、それ自体が交渉の材料になる。隠しているのではなく、順番の問題。氏名は相談の経過に応じて本人に直接伝える。</p></div>
+  <div><b>RECORDS // 記録との関係</b><p>CASE FILESに並ぶのは運営者自身の記録。あなたの相談が記事や音声になることはない。</p></div>
+  <div><b>RESPONSE // 返信</b><p>読むのは個人。定型の自動返信ではなく、内容に触れた返信を返す。数日かかる場合がある。急を要する場合はその旨を本文に。</p></div>
+ </div>
+
+ <div class="terms">
+  <span>冷やかし、調査、取材を目的とした問い合わせには対応しない</span>
+  <span>送信内容は日時とともに記録される</span>
+  <span>身元の開示は受付の条件ではない。国籍、信用情報、司法手続の経歴で入口を閉じない</span>
+ </div>
+
  <div class="sosGrid" style="margin-top:34px">
   <figure class="sosPhoto" style="margin:0">
    <img src="assets/sos.webp" alt="">
@@ -241,6 +264,12 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 
    <label>RETURN CHANNEL // 連絡方法</label>
    <input placeholder="Email / SNS account etc.">
+
+   <label>DISCLOSURE // 専門家への共有</label>
+   <div class="checks" style="grid-template-columns:1fr">
+    <label><input type="radio" name="disc"> 必要な範囲の専門家への共有に同意する</label>
+    <label><input type="radio" name="disc"> まず運営者とだけ話したい</label>
+   </div>
 
    <button class="btn red submit" disabled>TRANSMIT REQUEST // 送信（準備中）</button>
 
@@ -390,7 +419,12 @@ var TALLY_ID = "";
  var stat = document.querySelector('.sosGrid form');
  var live = document.getElementById('liveForm');
  var f = document.getElementById('tallyFrame');
- f.src = "https://tally.so/embed/" + TALLY_ID + "?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+ var ref = document.referrer || "direct";
+ try{ ref = ref === "direct" ? "direct" : new URL(ref).hostname; }catch(e){ ref = "direct"; }
+ f.src = "https://tally.so/embed/" + TALLY_ID
+   + "?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+   + "&src=" + encodeURIComponent(ref)
+   + "&t=" + encodeURIComponent(new Date().toISOString());
  if(stat) stat.hidden = true;
  live.hidden = false;
  window.addEventListener('message', function(e){
