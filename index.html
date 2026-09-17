@@ -35,6 +35,8 @@ img{max-width:100%;display:block}
 .brand img{width:40px;height:40px;border-radius:50%;object-fit:contain;background:#fff}
 .navlinks{display:flex;gap:20px;align-items:center;font-size:11px;color:#3f4a44}
 .sos{border:1px solid var(--red);color:var(--red);background:#fff;padding:10px 15px;font-weight:800}
+.navx{border:1px solid var(--line);color:var(--ink2);background:#fff;padding:9px 11px;display:inline-flex;align-items:center;line-height:0;transition:.2s}
+.navx:hover{color:var(--ink);border-color:var(--ink2)}
 
 /* hero */
 .hero{position:relative;border-bottom:1px solid var(--line)}
@@ -167,7 +169,9 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-s
  section{padding:62px 0}
 }
 @media(max-width:560px){
- .navlinks a:not(.sos){display:none}
+ .navlinks a:not(.sos):not(.navx){display:none}
+ .navlinks{gap:10px}
+ .sos{padding:10px 12px}
  .brand span{display:none}
  .modules,.files,.checks{grid-template-columns:1fr}
  h1{font-size:clamp(42px,14vw,66px)}
@@ -191,6 +195,7 @@ footer{padding:44px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <a href="#cases">CASE FILES</a>
 <a href="#code">THE CODE</a>
 <a href="#join">OPERATIVES</a>
+<a class="navx" href="https://x.com/lastgate_org" target="_blank" rel="noopener" aria-label="X // @lastgate_org"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
 <a class="sos" href="#help">SOS // 助けを求める</a>
 </nav>
 </div></header>
